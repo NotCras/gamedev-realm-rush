@@ -41,7 +41,10 @@ public class CubeEditor : MonoBehaviour
             snapPos.y = 0f;
         }
 
-        textMesh.text = snapPos.x / gridSize + "," + snapPos.z / gridSize;        
+        String labelText = snapPos.x / gridSize + "," + snapPos.z / gridSize;
+
+        textMesh.text = labelText;
+        gameObject.name = labelText;
 
         transform.position = new Vector3(snapPos.x, snapPos.y, snapPos.z);
     }
