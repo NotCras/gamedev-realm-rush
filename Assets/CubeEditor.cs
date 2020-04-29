@@ -3,49 +3,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode][SelectionBase]
+[ExecuteInEditMode][SelectionBase][RequireComponent(typeof(Waypoint))]
 public class CubeEditor : MonoBehaviour
 {
-
-    [Range(1f,20f)][SerializeField] float gridSize = 10f;
-    [SerializeField] private bool y_movement = false;
-
+    const bool y_movement = false;
     private TextMesh textMesh;
+    
+    private Waypoint waypoint;
 
-    private void Start()
+    private void Awake()
     {
-
+        waypoint = GetComponent<Waypoint>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        snapToGrid();
+        SnapToGrid();
+        UpdateGridLabel();
     }
 
-    private void snapToGrid()
+    private void SnapToGrid()
     {
-        Vector3 snapPos;
-        
+        int gridSize = waypoint.getGridSize();
         textMesh = GetComponentInChildren<TextMesh>();
+        transform.position = new Vector3(
+            waypoint.getGridPos().x,
+            0f,
+            waypoint.getGridPos().y);
+    }
+
+    private void UpdateGridLabel()
+    {
+        int gridSize = waypoint.getGridSize();
+        Vector3 gridPos = new Vector3(
+            waypoint.getGridPos().x, 
+            0f, 
+            waypoint.getGridPos().y);
         
-        snapPos.x = (Mathf.RoundToInt(transform.position.x / gridSize)) * gridSize;
-        snapPos.z = (Mathf.RoundToInt(transform.position.z / gridSize)) * gridSize;
-
-        if (y_movement)
-        {
-            snapPos.y = (Mathf.RoundToInt(transform.position.y / gridSize)) * gridSize;
-        }
-        else
-        {
-            snapPos.y = 0f;
-        }
-
-        String labelText = snapPos.x / gridSize + "," + snapPos.z / gridSize;
+        String labelText = gridPos.x / gridSize + "," + gridPos.z / gridSize;
 
         textMesh.text = labelText;
         gameObject.name = labelText;
-
-        transform.position = new Vector3(snapPos.x, snapPos.y, snapPos.z);
     }
 }
