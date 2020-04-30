@@ -4,34 +4,26 @@ using UnityEngine;
 
 public class EnemyMover : MonoBehaviour
 {
-    [SerializeField] private List<Waypoint> path;
     [SerializeField] private float dwellTime = 1f;
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(FollowPath());
+        Pathfinder pathfinder = FindObjectOfType<Pathfinder>();
+        var path = pathfinder.GetPathFound();
+        StartCoroutine(FollowPath(path));
     }
-    
-    
-    IEnumerator FollowPath()
+
+    IEnumerator FollowPath(List<Waypoint> pathway)
     {
-        print("Starting patrol.");
-        
-        foreach (var w in path)
+        print("Starting movement.");
+
+        foreach (var w in pathway)
         {
             transform.position = w.transform.position;
-            print("Visiting " + w.name);
             yield return new WaitForSeconds(dwellTime);
         }
 
-        print("Ending patrol. ");
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        print("Ending movement. ");
     }
 }

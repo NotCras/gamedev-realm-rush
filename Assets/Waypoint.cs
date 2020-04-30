@@ -7,6 +7,10 @@ public class Waypoint : MonoBehaviour
 {
     private Vector2Int gridPos;
     const int gridSize = 10;
+    
+    // public is ok here because it is a data class
+    public bool isExplored = false;
+    public Waypoint exploredFrom;
 
     public int getGridSize()
     {
@@ -16,9 +20,13 @@ public class Waypoint : MonoBehaviour
     public Vector2Int getGridPos()
     {
         return new Vector2Int(
-            Mathf.RoundToInt(transform.position.x / gridSize) * gridSize, 
-            Mathf.RoundToInt(transform.position.z / gridSize) * gridSize);
+            Mathf.RoundToInt(transform.position.x / gridSize), 
+            Mathf.RoundToInt(transform.position.z / gridSize));
     }
 
-
+    public void SetTopColor(Color color)
+    {
+        MeshRenderer topMeshRenderer = transform.Find("Top").GetComponent<MeshRenderer>();
+        topMeshRenderer.material.color = color;
+    }
 }

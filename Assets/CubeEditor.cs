@@ -28,20 +28,19 @@ public class CubeEditor : MonoBehaviour
         int gridSize = waypoint.getGridSize();
         textMesh = GetComponentInChildren<TextMesh>();
         transform.position = new Vector3(
-            waypoint.getGridPos().x,
+            waypoint.getGridPos().x * gridSize,
             0f,
-            waypoint.getGridPos().y);
+            waypoint.getGridPos().y * gridSize);
     }
 
     private void UpdateGridLabel()
     {
-        int gridSize = waypoint.getGridSize();
         Vector3 gridPos = new Vector3(
             waypoint.getGridPos().x, 
             0f, 
             waypoint.getGridPos().y);
         
-        String labelText = gridPos.x / gridSize + "," + gridPos.z / gridSize;
+        String labelText = gridPos.x + "," + gridPos.z;
 
         textMesh.text = labelText;
         gameObject.name = labelText;
