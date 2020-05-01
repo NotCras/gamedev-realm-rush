@@ -13,6 +13,7 @@ public class Pathfinder : MonoBehaviour
     [SerializeField] private Waypoint end;
 
     private bool isRunning = true;
+    private bool alreadyRun = false;
     private Waypoint currentSearchCenter;
 
     private Vector2Int[] directions =
@@ -136,9 +137,18 @@ public class Pathfinder : MonoBehaviour
 
     public List<Waypoint> GetPathFound()
     {
-        LoadBlocks();
-        BreadthFirstSearch();
-        CreatePath();
-        return path;
+        if (!alreadyRun)
+        {
+            LoadBlocks();
+            BreadthFirstSearch();
+            CreatePath();
+            alreadyRun = true;
+            return path;
+        }
+        else
+        {
+            return path;
+        }
+
     }
 }

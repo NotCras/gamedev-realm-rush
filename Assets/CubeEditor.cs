@@ -35,12 +35,9 @@ public class CubeEditor : MonoBehaviour
 
     private void UpdateGridLabel()
     {
-        Vector3 gridPos = new Vector3(
-            waypoint.getGridPos().x, 
-            0f, 
-            waypoint.getGridPos().y);
+        Vector2Int gridPos = waypoint.getGridPos();
         
-        String labelText = gridPos.x + "," + gridPos.z;
+        String labelText = gridPos.x + "," + gridPos.y;
 
         textMesh.text = labelText;
         gameObject.name = labelText;
