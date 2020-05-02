@@ -14,7 +14,7 @@ public class tower : MonoBehaviour
     
     void Start()
     {
-        //blaster = FindObjectOfType<ParticleSystem>();
+        //blaster = GetComponent<ParticleSystem>();
         ToggleBlaster(false);
     }
     
@@ -30,10 +30,9 @@ public class tower : MonoBehaviour
         else
         {
             ToggleBlaster(false);
-            print(gameObject.name + " turning off blaster. No enemies!");
+            print(" No enemies! Its: " + gameObject.name);
         }
         
-
     }
 
     void SetTargetEnemy()
@@ -56,25 +55,25 @@ public class tower : MonoBehaviour
 
     }
 
-    Transform CompareEnemyDistances(Transform priorChamp, Transform challenger)
+    Transform CompareEnemyDistances(Transform enemyA, Transform enemyB)
     {
      
-        var champDistance = Vector3.Distance(
+        var distA = Vector3.Distance(
             transform.position,
-            priorChamp.position
+            enemyA.position
         );
         
-        var challengerDistance = Vector3.Distance(
-            transform.position,
-            challenger.position
+        var distB = Vector3.Distance(
+            transform.position, 
+            enemyB.position
         );
 
-        if (challengerDistance >= champDistance)
+        if (distB >= distA)
         {
-            return challenger;
+            return enemyB;
         }
 
-        return priorChamp;
+        return enemyA;
     }
     
     
@@ -88,6 +87,7 @@ public class tower : MonoBehaviour
         if (distanceToEnemy <= attackRange)
         {
             ToggleBlaster(true);
+            print("Targetted: " + targetEnemy.name + " , " + gameObject.name);
         }
         else
         {
@@ -101,6 +101,5 @@ public class tower : MonoBehaviour
     {
         var emissionModule = blaster.emission;
         emissionModule.enabled = isActive;
-
     }
 }

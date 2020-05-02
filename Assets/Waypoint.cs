@@ -16,6 +16,12 @@ public class Waypoint : MonoBehaviour
     {
         return gridSize;
     }
+    
+    void OnMouseOver()
+    {
+        //If your mouse hovers over the GameObject with the script attached, output this message
+        print("Mouse is over GameObject: " + gameObject.name);
+    }
 
     public Vector2Int getGridPos()
     {

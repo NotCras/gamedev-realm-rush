@@ -5,19 +5,22 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private int enemyHealth = 5;
-    private ParticleSystem[] emitters;
+    //private ParticleSystem[] emitters;
 
     // Start is called before the first frame update
     void Start()
     {
         AddNonTriggerBoxCollider();
-        emitters = FindObjectsOfType<ParticleSystem>();
+        //emitters = GetComponents<ParticleSystem>();
     }
 
     void AddNonTriggerBoxCollider()
     {
-        Collider boxCollider = gameObject.AddComponent<BoxCollider>();
+        BoxCollider boxCollider = gameObject.AddComponent<BoxCollider>();
         boxCollider.isTrigger = false;
+        boxCollider.size = new Vector3(5f, 5f, 5f);
+        boxCollider.center = new Vector3(0f, 4f, 0f);
+        
     }
     
     private void OnParticleCollision(GameObject other)
@@ -31,11 +34,12 @@ public class Enemy : MonoBehaviour
 
     void KillEnemy()
     {
+        print("I'm dead: " + gameObject.name);
         Destroy(this.gameObject);
-        foreach (var p in emitters)
+        /*foreach (var p in emitters)
         {
             Destroy(p);
-        }
+        }*/
         
     }
 

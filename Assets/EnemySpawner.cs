@@ -20,8 +20,8 @@ public class EnemySpawner : MonoBehaviour
         //wait for a set amount of time between spawning another enemy
         while (true)
         {
-            Instantiate(enemyToSpawn, transform.position, Quaternion.identity, gameObject.transform);
             yield return new WaitForSeconds(secondsBetweenSpawn);
+            Instantiate(enemyToSpawn, transform.position, Quaternion.identity, gameObject.transform);
         }
         print("Spawning got out of while loop");
     }
