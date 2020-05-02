@@ -30,7 +30,6 @@ public class tower : MonoBehaviour
         else
         {
             ToggleBlaster(false);
-            print(" No enemies! Its: " + gameObject.name);
         }
         
     }
@@ -87,12 +86,10 @@ public class tower : MonoBehaviour
         if (distanceToEnemy <= attackRange)
         {
             ToggleBlaster(true);
-            print("Targetted: " + targetEnemy.name + " , " + gameObject.name);
         }
         else
         {
             ToggleBlaster(false);
-            print(gameObject.name + " turning off blaster.");
         }
         
     }

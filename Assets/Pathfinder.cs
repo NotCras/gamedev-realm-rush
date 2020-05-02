@@ -123,16 +123,24 @@ public class Pathfinder : MonoBehaviour
 
     private void CreatePath()
     {
-        path.Add(end);
+        AddToPath(end);
+
         Waypoint previous = end.exploredFrom;
+        
         while (previous != start)
         {
-            path.Add(previous);
+            AddToPath(previous);
             previous = previous.exploredFrom;
         }
-        
-        path.Add(start);
+
+        AddToPath(start);
         path.Reverse();
+    }
+
+    private void AddToPath(Waypoint w)
+    {
+        path.Add(w);
+        w.isPlaceable = false;
     }
 
     public List<Waypoint> GetPathFound()

@@ -34,7 +34,6 @@ public class Enemy : MonoBehaviour
 
     void KillEnemy()
     {
-        print("I'm dead: " + gameObject.name);
         Destroy(this.gameObject);
         /*foreach (var p in emitters)
         {

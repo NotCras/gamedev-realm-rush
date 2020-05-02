@@ -11,7 +11,8 @@ public class Waypoint : MonoBehaviour
     // public is ok here because it is a data class
     public bool isExplored = false;
     public Waypoint exploredFrom;
-
+    public bool isPlaceable = true;
+    
     public int getGridSize()
     {
         return gridSize;
@@ -19,8 +20,11 @@ public class Waypoint : MonoBehaviour
     
     void OnMouseOver()
     {
-        //If your mouse hovers over the GameObject with the script attached, output this message
-        print("Mouse is over GameObject: " + gameObject.name);
+        if (Input.GetMouseButtonDown(0) && isPlaceable)
+        {
+            print("Mouse clicked on: " + gameObject.name);
+        }
+        
     }
 
     public Vector2Int getGridPos()
