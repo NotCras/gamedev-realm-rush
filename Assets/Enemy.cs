@@ -5,8 +5,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private int enemyHealth = 5;
-    //private ParticleSystem[] emitters;
-
+    [SerializeField] private ParticleSystem hitParticlePrefab;
+    [SerializeField] private ParticleSystem deathParticlePrefab;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,8 @@ public class Enemy : MonoBehaviour
     private void OnParticleCollision(GameObject other)
     {
         enemyHealth--;
+        hitParticlePrefab.Play();
+        
         if (enemyHealth <= 0)
         {
             KillEnemy();
@@ -34,6 +37,9 @@ public class Enemy : MonoBehaviour
 
     void KillEnemy()
     {
+        var vfx = Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
+        vfx.Play(); //todo: destroy the particlesystem after it is instantiated, keep things clean
+        
         Destroy(this.gameObject);
         /*foreach (var p in emitters)
         {

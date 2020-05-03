@@ -46,8 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToPan: {fileID: 5428652532517104382}
-  targetEnemy: {fileID: 0}
-  attackRange: 15
+  attackRange: 30
   blaster: {fileID: 1083024312985442769}
 --- !u!1001 &5429336698933862038
 PrefabInstance:
@@ -276,6 +275,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1297999749772353591, guid: bb0a079d159bb8627b38fd4d93cf3c28,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b5fdbb1d0f5374cd9925eab0238603fa, type: 2}
+    - target: {fileID: 1297999749772353591, guid: bb0a079d159bb8627b38fd4d93cf3c28,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 4439194522614321592, guid: bb0a079d159bb8627b38fd4d93cf3c28,
         type: 3}
       propertyPath: m_Name
@@ -285,6 +294,36 @@ PrefabInstance:
         type: 3}
       propertyPath: prewarm
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8528516382441025309, guid: bb0a079d159bb8627b38fd4d93cf3c28,
+        type: 3}
+      propertyPath: CollisionModule.minKillSpeed
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8528516382441025309, guid: bb0a079d159bb8627b38fd4d93cf3c28,
+        type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxColor.r
+      value: 0.7075472
+      objectReference: {fileID: 0}
+    - target: {fileID: 8528516382441025309, guid: bb0a079d159bb8627b38fd4d93cf3c28,
+        type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxColor.g
+      value: 0.48151425
+      objectReference: {fileID: 0}
+    - target: {fileID: 8528516382441025309, guid: bb0a079d159bb8627b38fd4d93cf3c28,
+        type: 3}
+      propertyPath: TrailModule.colorOverLifetime.maxColor.b
+      value: 0.18356179
+      objectReference: {fileID: 0}
+    - target: {fileID: 8528516382441025309, guid: bb0a079d159bb8627b38fd4d93cf3c28,
+        type: 3}
+      propertyPath: TrailModule.colorOverTrail.maxColor.g
+      value: 0.5448069
+      objectReference: {fileID: 0}
+    - target: {fileID: 8528516382441025309, guid: bb0a079d159bb8627b38fd4d93cf3c28,
+        type: 3}
+      propertyPath: TrailModule.colorOverTrail.maxColor.b
+      value: 0.19651121
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb0a079d159bb8627b38fd4d93cf3c28, type: 3}

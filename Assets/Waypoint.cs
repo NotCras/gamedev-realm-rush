@@ -12,6 +12,7 @@ public class Waypoint : MonoBehaviour
     public bool isExplored = false;
     public Waypoint exploredFrom;
     public bool isPlaceable = true;
+    [SerializeField] tower towerPrefab;
     
     public int getGridSize()
     {
@@ -23,6 +24,8 @@ public class Waypoint : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && isPlaceable)
         {
             print("Mouse clicked on: " + gameObject.name);
+            Instantiate(towerPrefab, transform.position, transform.rotation);
+            isPlaceable = true;
         }
         
     }
