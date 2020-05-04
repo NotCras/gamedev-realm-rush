@@ -10,6 +10,8 @@ public class tower : MonoBehaviour
 
     [SerializeField] private ParticleSystem blaster;
 
+    public Waypoint baseWaypoint;
+    
     private Transform targetEnemy;
     
     void Start()

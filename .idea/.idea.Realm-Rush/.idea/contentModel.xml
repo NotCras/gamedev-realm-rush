@@ -11,6 +11,7 @@
         <e p="EnemyMover.cs" t="Include" />
         <e p="EnemySpawner.cs" t="Include" />
         <e p="Pathfinder.cs" t="Include" />
+        <e p="TowerFactory.cs" t="Include" />
         <e p="Waypoint.cs" t="Include" />
         <e p="tower.cs" t="Include" />
       </e>
