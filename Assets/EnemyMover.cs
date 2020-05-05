@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyMover : MonoBehaviour
 {
     [SerializeField] private float dwellTime = 1f;
-
+    [SerializeField] private ParticleSystem goalExplode;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,16 @@ public class EnemyMover : MonoBehaviour
             yield return new WaitForSeconds(dwellTime);
         }
 
-        print("Ending movement. ");
+        AttackBase();
+    }
+
+    private void AttackBase()
+    {
+        var vfx = Instantiate(goalExplode, transform.position, Quaternion.identity);
+        vfx.Play();
+        float destroyDelay = vfx.main.duration;
+        Destroy(vfx.gameObject, destroyDelay);
+
+        Destroy(this.gameObject);
     }
 }

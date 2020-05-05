@@ -7,7 +7,6 @@ public class EnemySpawner : MonoBehaviour
     [Range(1,60)][SerializeField] private float secondsBetweenSpawn = 5f;
     [SerializeField] private EnemyMover enemyToSpawn;
     
-    
     // Start is called before the first frame update
     void Start()
     {

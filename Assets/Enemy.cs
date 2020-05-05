@@ -38,8 +38,10 @@ public class Enemy : MonoBehaviour
     void KillEnemy()
     {
         var vfx = Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
-        vfx.Play(); //todo: destroy the particlesystem after it is instantiated, keep things clean
-        
+        vfx.Play(); 
+        float destroyDelay = vfx.main.duration;
+        Destroy(vfx.gameObject, destroyDelay);
+
         Destroy(this.gameObject);
         /*foreach (var p in emitters)
         {

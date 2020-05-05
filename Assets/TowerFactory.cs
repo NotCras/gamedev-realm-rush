@@ -27,7 +27,7 @@ public class TowerFactory : MonoBehaviour
 
     private void InstantiateNewTower(Waypoint w)
     {
-        var newTower = Instantiate(towerPrefab, w.transform.position, Quaternion.identity);
+        var newTower = Instantiate(towerPrefab, w.transform.position, Quaternion.identity, gameObject.transform);
         w.isPlaceable = false;
         
         newTower.baseWaypoint = w;

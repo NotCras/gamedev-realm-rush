@@ -51,7 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dde98b9c88f5066c1bfd973673636548, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dwellTime: 2
+  dwellTime: 1
+  goalExplode: {fileID: 198537984209914932, guid: 9bdbb592dee427d6b810cc648290c16c,
+    type: 3}
 --- !u!114 &4266425854347231860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,7 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d605e183cf619231ba48f4a7af5407c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 10
+  enemyHealth: 4
   hitParticlePrefab: {fileID: 3992936734549887120}
   deathParticlePrefab: {fileID: 198537984209914932, guid: 1a51bfda454239a41afb7dee687c6ac0,
     type: 3}

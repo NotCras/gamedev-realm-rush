@@ -9,7 +9,7 @@ public class tower : MonoBehaviour
     [SerializeField] private float attackRange = 7;
 
     [SerializeField] private ParticleSystem blaster;
-
+    
     public Waypoint baseWaypoint;
     
     private Transform targetEnemy;
