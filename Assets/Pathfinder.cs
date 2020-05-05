@@ -11,7 +11,8 @@ public class Pathfinder : MonoBehaviour
     
     [SerializeField] private Waypoint start;
     [SerializeField] private Waypoint end;
-
+    [SerializeField] private GameObject pathIndicator;
+    
     private bool isRunning = true;
     private bool alreadyRun = false;
     private Waypoint currentSearchCenter;
@@ -23,12 +24,6 @@ public class Pathfinder : MonoBehaviour
         Vector2Int.left,
         Vector2Int.down
     };
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     private void LoadBlocks()
     {
@@ -43,26 +38,10 @@ public class Pathfinder : MonoBehaviour
             else
             {
                 grid.Add(gridPos, w);
-                SetBlockColor(w);
             }
         }
     }
-
-    private void SetBlockColor(Waypoint w)
-    {
-        if (w == start)
-        {
-            w.SetTopColor(Color.red);
-        }
-        else if (w == end)
-        {
-            w.SetTopColor(Color.green);
-        }
-        else
-        {
-            w.SetTopColor(Color.white);
-        }
-    }
+    
 
     void BreadthFirstSearch()
     {
@@ -71,7 +50,6 @@ public class Pathfinder : MonoBehaviour
         while (queue.Count > 0 && isRunning)
         {
             currentSearchCenter = queue.Dequeue();
-            currentSearchCenter.SetTopColor(Color.grey);
             currentSearchCenter.isExplored = true; 
 
             HaltIfEndFound();
@@ -100,7 +78,6 @@ public class Pathfinder : MonoBehaviour
             
             if (!neighbor.isExplored)
             {
-                neighbor.SetTopColor(Color.yellow); //todo: move this away later
                 neighbor.exploredFrom = currentSearchCenter;
                 queue.Enqueue(neighbor);
             }
@@ -116,7 +93,6 @@ public class Pathfinder : MonoBehaviour
 
         if (currentSearchCenter == end)
         {
-            currentSearchCenter.SetTopColor(Color.green);
             isRunning = false;
         }
     }
@@ -124,7 +100,6 @@ public class Pathfinder : MonoBehaviour
     private void CreatePath()
     {
         AddToPath(end);
-
         Waypoint previous = end.exploredFrom;
         
         while (previous != start)
@@ -140,6 +115,7 @@ public class Pathfinder : MonoBehaviour
     private void AddToPath(Waypoint w)
     {
         path.Add(w);
+        Instantiate(pathIndicator, w.transform.position, Quaternion.identity, this.transform);
         w.isPlaceable = false;
     }
 

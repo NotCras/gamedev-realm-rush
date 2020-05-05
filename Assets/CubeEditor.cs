@@ -26,7 +26,14 @@ public class CubeEditor : MonoBehaviour
     private void SnapToGrid()
     {
         int gridSize = waypoint.getGridSize();
-        textMesh = GetComponentInChildren<TextMesh>();
+        try
+        {
+            textMesh = GetComponentInChildren<TextMesh>();
+        }
+        catch
+        {
+            //Debug.Log("No grid labels!");
+        }
         transform.position = new Vector3(
             waypoint.getGridPos().x * gridSize,
             0f,
@@ -36,10 +43,19 @@ public class CubeEditor : MonoBehaviour
     private void UpdateGridLabel()
     {
         Vector2Int gridPos = waypoint.getGridPos();
-        
+
         String labelText = gridPos.x + "," + gridPos.y;
 
-        textMesh.text = labelText;
+        try
+        {
+            textMesh.text = labelText;
+        }
+        catch
+        {
+            //Debug.Log("No text objects on waypoints!");
+        }
+        
         gameObject.name = labelText;
+
     }
 }

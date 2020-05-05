@@ -9,6 +9,7 @@ public class tower : MonoBehaviour
     [SerializeField] private float attackRange = 7;
 
     [SerializeField] private ParticleSystem blaster;
+    [SerializeField] private AudioClip fireBlaster;
     
     public Waypoint baseWaypoint;
     
@@ -69,7 +70,7 @@ public class tower : MonoBehaviour
             enemyB.position
         );
 
-        if (distB >= distA)
+        if (distB <= distA)
         {
             return enemyB;
         }

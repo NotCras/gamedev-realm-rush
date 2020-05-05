@@ -7,12 +7,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int enemyHealth = 5;
     [SerializeField] private ParticleSystem hitParticlePrefab;
     [SerializeField] private ParticleSystem deathParticlePrefab;
+    [SerializeField] private AudioClip enemyDamage;
+    [SerializeField] private AudioClip enemyDeath;
     
-    // Start is called before the first frame update
     void Start()
     {
         AddNonTriggerBoxCollider();
-        //emitters = GetComponents<ParticleSystem>();
     }
 
     void AddNonTriggerBoxCollider()
@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour
     {
         enemyHealth--;
         hitParticlePrefab.Play();
+        GetComponent<AudioSource>().PlayOneShot(enemyDamage);
         
         if (enemyHealth <= 0)
         {
@@ -41,18 +42,11 @@ public class Enemy : MonoBehaviour
         vfx.Play(); 
         float destroyDelay = vfx.main.duration;
         Destroy(vfx.gameObject, destroyDelay);
+        
+        AudioSource.PlayClipAtPoint(enemyDeath, Camera.main.transform.position); //has to be next to the camera because of rolloff
 
         Destroy(this.gameObject);
-        /*foreach (var p in emitters)
-        {
-            Destroy(p);
-        }*/
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
